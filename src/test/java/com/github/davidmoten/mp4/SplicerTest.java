@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.jcodec.containers.mp4.MP4Util;
+import org.jcodec.containers.mp4.boxes.Box;
 import org.jcodec.containers.mp4.boxes.Header;
 import org.jcodec.containers.mp4.boxes.MovieBox;
 import org.junit.Test;
@@ -20,6 +21,9 @@ public class SplicerTest {
 		System.out.println("storedSize=" + m.getDisplaySize().getWidth() + "x" + m.getDisplaySize().getHeight());
 		Header h = m.getHeader();
 		System.out.println("bodySize=" + h.getBodySize() + ", size=" + h.getSize() + ", headerSize=" + h.headerSize());
+		for (Box box: m.getBoxes()) {
+			System.out.println(box.getFourcc());
+		}
 	}
 
 }
